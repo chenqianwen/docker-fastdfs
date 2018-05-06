@@ -1,0 +1,6 @@
+docker run -dti --network=host --name tracker -v /data/fastdfs/tracker:/var/fdfs --privileged=true --restart=always registry-internal.cn-hangzhou.aliyuncs.com/c-wms/fastdfs:1.0 tracker
+
+docker run -dti --network=host --name storage -e TRACKER_SERVER=10.25.84.83:22122 -e GROUP_NAME=files -e HTTPPORT=89 -v /data/fastdfs/storage:/var/fdfs --privileged=true --restart=always registry-internal.cn-hangzhou.aliyuncs.com/c-wms/fastdfs:1.0 storage
+
+docker tag fastdfs:1.0 registry.cn-hangzhou.aliyuncs.com/c-wms-publish/fastdfs:1.0
+docker push registry.cn-hangzhou.aliyuncs.com/c-wms-publish/fastdfs:1.0
