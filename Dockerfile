@@ -10,7 +10,7 @@ ENV FASTDFS_PATH=/opt/fdfs \
 
 #get all the dependences
 RUN yum install -y git gcc make wget unzip vixie-cron \
-	pcre pcre-devel openssl openssl-devel lua-devel \
+    pcre pcre-devel openssl openssl-devel lua-devel \
     readline readline-devel perl-ExtUtils-Embed \
     libjpeg libjpeg-devel libpng libpng-devel giflib giflib-devel freetype freetype-devel  openjpeg openjpeg-devel \
     GraphicsMagick GraphicsMagick-devel  && \
@@ -76,7 +76,8 @@ RUN cd /tmp && \
     cp /tmp/fastdfs-nginx-module/src/mod_fastdfs.conf /etc/fdfs/ && \
     sed -i 's:base_path=.*:base_path=/var/fdfs:g' /etc/fdfs/mod_fastdfs.conf && \
     sed -i 's:store_path0=.*:store_path0=/var/fdfs:g' /etc/fdfs/mod_fastdfs.conf && \
-    rm -rf /tmp/*
+    rm -rf /tmp/nginx-1.9.15 && \
+    rm -rf /tmp/nginx-1.9.15.tar.gz
 
 
 VOLUME ["$FASTDFS_BASE_PATH", "/etc/fdfs"]   
